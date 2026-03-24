@@ -46,13 +46,17 @@ function calcmore(){
           div.innerHTML+="<p>Total interest paid:"+totalInterestPaid+"</p>"
            div.innerHTML+="<p>Total Loan cost:"+totalLoanCost+"</p>"
             div.innerHTML+="<p>Monthly payment:"+monthlyPayment+"</p>"
-            let interestpaid
-            let principalPaid
-            let remainingLoanBalance
-        for( monthf=1;monthf>totalMonths;monthf++){
-            div.innerHTML+="<p>Month "+monthf+ "Interest paid"+interestpaid+"Principal paid"+principalPaid+"Remaining loan balance"+remainingLoanBalance
+            let remainingLoanBalance=PrincipalLoanAmount
+            let interestpaid=monthlyInterestRate*remainingLoanBalance
+            
+            let principalPaid=Number(monthlyPayment)-interestpaid
+            
+        for( monthf=1;monthf<totalMonths;monthf++){
+            
+            
             interestpaid=monthlyInterestRate*remainingLoanBalance
-            principalPaid=monthlyPayment-interestpaid
+            principalPaid=Number(monthlyPayment)-interestpaid
             remainingLoanBalance=PrincipalLoanAmount-principalPaid
+            div.innerHTML+="<p>Month "+monthf+ "Interest paid "+interestpaid+"Principal paid "+principalPaid+"Remaining loan balance "+remainingLoanBalance
         }
 }
